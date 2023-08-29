@@ -4,7 +4,6 @@ using TaskManager.Application.Task.Commands.CreateTask;
 using TaskManager.Application.Task.Commands.DeleteTask;
 using TaskManager.Application.Task.Commands.MarkTaskCompleted;
 using TaskManager.Application.Task.Queries.GetAllTasks;
-using TaskManager.Shared.Dtos.Task;
 
 namespace TaskManager.Api.Controllers;
 
