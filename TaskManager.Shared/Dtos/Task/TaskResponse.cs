@@ -2,4 +2,4 @@
 
 namespace TaskManager.Shared.Dtos.Task;
 
-public sealed record TaskResponse(string Id, string Title, string Description, string DueDate, bool IsCompleted);
+public sealed record TaskResponse(string Id, string Title, string Description, string Priority, string DueDate, bool IsCompleted);

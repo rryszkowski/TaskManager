@@ -19,6 +19,6 @@ public class GetAllTasksHandler : IRequestHandler<GetAllTasksQuery, IEnumerable<
     {
         var tasks = await _taskRepository.GetAll();
 
-        return tasks.Select(t => new TaskResponse(t.Id, t.Title, t.Description, $"{t.DueDate}", t.IsCompleted));
+        return tasks.Select(t => new TaskResponse(t.Id, t.Title, t.Description, $"{t.Priority}", $"{t.DueDate}", t.IsCompleted));
     }
 }
