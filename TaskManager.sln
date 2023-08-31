@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D3C6E555-B80
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{15324033-3255-45F5-A63C-DEDC3B520B23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Architecture.Tests", "Architecture.Tests\Architecture.Tests.csproj", "{4CFC3C56-B8BC-4C05-9DEA-C47D9157BD3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Architecture.Tests", "Architecture.Tests\Architecture.Tests.csproj", "{4CFC3C56-B8BC-4C05-9DEA-C47D9157BD3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.IntegrationTests", "TaskManager.IntegrationTests\TaskManager.IntegrationTests.csproj", "{20D34633-EA77-4041-A74E-21E8022562FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{4CFC3C56-B8BC-4C05-9DEA-C47D9157BD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CFC3C56-B8BC-4C05-9DEA-C47D9157BD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CFC3C56-B8BC-4C05-9DEA-C47D9157BD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D34633-EA77-4041-A74E-21E8022562FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D34633-EA77-4041-A74E-21E8022562FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D34633-EA77-4041-A74E-21E8022562FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D34633-EA77-4041-A74E-21E8022562FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{41C4900D-0ADC-4AC9-A911-57FFD5C84835} = {D3C6E555-B807-4561-800B-4580F6DEF6ED}
 		{973FC3FE-29F0-472A-B079-DAA2F13C6727} = {D3C6E555-B807-4561-800B-4580F6DEF6ED}
 		{4CFC3C56-B8BC-4C05-9DEA-C47D9157BD3F} = {15324033-3255-45F5-A63C-DEDC3B520B23}
+		{20D34633-EA77-4041-A74E-21E8022562FB} = {15324033-3255-45F5-A63C-DEDC3B520B23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F47F8687-BC23-438D-9C69-78A4C764CEAF}

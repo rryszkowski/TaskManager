@@ -14,9 +14,11 @@ public class TaskRepository : ITaskRepository
         _tasksCollection = mongoDatabase.GetCollection<TaskEntity>("Tasks");
     }
 
-    public async Task Create(TaskEntity task)
+    public async Task<string> Create(TaskEntity task)
     {
         await _tasksCollection.InsertOneAsync(task);
+
+        return task.Id;
     }
 
     public async Task<TaskEntity> Get(string id)

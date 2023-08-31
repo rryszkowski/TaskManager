@@ -27,9 +27,7 @@ public class TaskController : ControllerBase
     {
         var command = new CreateTaskCommand(request);
 
-        await _sender.Send(command);
-        
-        return Ok();
+        return Ok(await _sender.Send(command));
     }
 
     [HttpPatch("{id}/completed")]

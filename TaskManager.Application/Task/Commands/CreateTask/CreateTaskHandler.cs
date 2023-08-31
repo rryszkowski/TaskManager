@@ -4,7 +4,7 @@ using TaskManager.Domain.Enums;
 
 namespace TaskManager.Application.Task.Commands.CreateTask;
 
-public class CreateTaskHandler : IRequestHandler<CreateTaskCommand>
+public class CreateTaskHandler : IRequestHandler<CreateTaskCommand, string>
 {
     private readonly ITaskRepository _taskRepository;
 
@@ -13,7 +13,7 @@ public class CreateTaskHandler : IRequestHandler<CreateTaskCommand>
         _taskRepository = taskRepository;
     }
 
-    public async System.Threading.Tasks.Task Handle(CreateTaskCommand request, CancellationToken cancellationToken)
+    public async System.Threading.Tasks.Task<string> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
     {
         var taskEntity = new Domain.Entities.Task
         {
@@ -24,8 +24,6 @@ public class CreateTaskHandler : IRequestHandler<CreateTaskCommand>
             IsCompleted = false
         };
 
-        await _taskRepository.Create(taskEntity);
-
-        await System.Threading.Tasks.Task.CompletedTask;
+        return await _taskRepository.Create(taskEntity);
     }
 }

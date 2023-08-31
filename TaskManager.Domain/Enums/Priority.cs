@@ -2,6 +2,7 @@
 
 public enum Priority
 {
+    Undefined,
     Low,
     Medium,
     High,
