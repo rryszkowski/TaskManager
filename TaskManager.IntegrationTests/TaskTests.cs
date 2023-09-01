@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using TaskManager.Application.Task.Commands.CreateTask;
+using TaskManager.Application.Task.Commands.AddTask;
 
 namespace TaskManager.IntegrationTests;
 
@@ -16,8 +16,8 @@ public class TaskTests : BaseIntegrationTest
         // Arrange
         const string title = "TestTitle";
 
-        var command = new CreateTaskCommand(
-            new CreateTaskRequest(title, "Test desc", "High", DateTime.Today));
+        var command = new AddTaskCommand(
+            new AddTaskRequest(title, "Test desc", "High", DateTime.Today));
 
         // Act
         var taskId = await Sender.Send(command);

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.Application.Task.Commands.CreateTask;
+using TaskManager.Application.Task.Commands.AddTask;
 using TaskManager.Application.Task.Commands.DeleteTask;
 using TaskManager.Application.Task.Commands.MarkTaskCompleted;
 using TaskManager.Application.Task.Queries.GetAllTasks;
@@ -23,9 +23,9 @@ public class TaskController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create([FromBody] CreateTaskRequest request)
+    public async Task<ActionResult> Add([FromBody] AddTaskRequest request)
     {
-        var command = new CreateTaskCommand(request);
+        var command = new AddTaskCommand(request);
 
         return Ok(await _sender.Send(command));
     }

@@ -2,18 +2,18 @@
 using TaskManager.Domain.Abstractions;
 using TaskManager.Domain.Enums;
 
-namespace TaskManager.Application.Task.Commands.CreateTask;
+namespace TaskManager.Application.Task.Commands.AddTask;
 
-public class CreateTaskHandler : IRequestHandler<CreateTaskCommand, string>
+public class AddTaskHandler : IRequestHandler<AddTaskCommand, string>
 {
     private readonly ITaskRepository _taskRepository;
 
-    public CreateTaskHandler(ITaskRepository taskRepository)
+    public AddTaskHandler(ITaskRepository taskRepository)
     {
         _taskRepository = taskRepository;
     }
 
-    public async System.Threading.Tasks.Task<string> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
+    public async System.Threading.Tasks.Task<string> Handle(AddTaskCommand request, CancellationToken cancellationToken)
     {
         var taskEntity = new Domain.Entities.Task
         {
