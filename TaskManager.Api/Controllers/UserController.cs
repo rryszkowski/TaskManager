@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.User.Commands.AddUser;
 using TaskManager.Application.User.Queries.GetAllUsers;
+using TaskManager.Application.User.Queries.GetUser;
 
 namespace TaskManager.Api.Controllers;
 
@@ -27,8 +28,14 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<ActionResult> Get()
     {
-        var tasks = await _sender.Send(new GetAllUsersQuery());
+        var users = await _sender.Send(new GetAllUsersQuery());
 
-        return Ok(tasks);
+        return Ok(users);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult> Get(string id)
+    {
+        return Ok(await _sender.Send(new GetUserQuery(id)));
     }
 }
