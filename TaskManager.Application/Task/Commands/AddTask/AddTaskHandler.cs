@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using TaskManager.Domain.Abstractions;
 using TaskManager.Domain.Enums;
+using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 namespace TaskManager.Application.Task.Commands.AddTask;
 
@@ -18,10 +19,10 @@ public class AddTaskHandler : IRequestHandler<AddTaskCommand, string>
         var taskEntity = new Domain.Entities.Task
         {
             Description = request.Request.Description,
-            Priority = Enum.Parse<Priority>(request.Request.Priority),
+            TaskPriority = Enum.Parse<TaskPriority>(request.Request.Priority),
             DueDate = request.Request.DueDate,
             Title = request.Request.Title,
-            IsCompleted = false
+            Status = TaskStatus.ToDo
         };
 
         return await _taskRepository.Create(taskEntity);

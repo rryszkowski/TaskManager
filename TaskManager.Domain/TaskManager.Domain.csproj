@@ -9,7 +9,10 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Abstractions\" />
-    <Folder Include="Enums\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Docker.DotNet" Version="3.125.15" />
   </ItemGroup>
 
   <ItemGroup>

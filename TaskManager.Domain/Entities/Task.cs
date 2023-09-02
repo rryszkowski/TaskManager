@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.Enums;
+using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 namespace TaskManager.Domain.Entities;
 
@@ -10,12 +11,12 @@ public class Task
 
     public string Description { get; set; }
 
-    public Priority Priority { get; set; }
+    public TaskPriority TaskPriority { get; set; }
 
     public DateTime DueDate { get; set; }
 
-    public bool IsCompleted { get; set; }
+    public  TaskStatus Status { get; set; }
 
     public void MarkAsCompleted()
-        => IsCompleted = true;
+        => Status = TaskStatus.Completed;
 }

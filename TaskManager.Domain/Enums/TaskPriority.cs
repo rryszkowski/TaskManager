@@ -1,6 +1,6 @@
 ﻿namespace TaskManager.Domain.Enums;
 
-public enum Priority
+public enum TaskPriority
 {
     Undefined,
     Low,

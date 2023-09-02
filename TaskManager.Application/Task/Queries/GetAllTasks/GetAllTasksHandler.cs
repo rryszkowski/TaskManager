@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System.Linq;
 using TaskManager.Domain.Abstractions;
 using TaskManager.Shared.Dtos.Task;
 
@@ -19,6 +20,6 @@ public class GetAllTasksHandler : IRequestHandler<GetAllTasksQuery, IEnumerable<
     {
         var tasks = await _taskRepository.GetAll();
 
-        return tasks.Select(t => new TaskResponse(t.Id, t.Title, t.Description, $"{t.Priority}", $"{t.DueDate}", t.IsCompleted));
+        return tasks.Select(t => new TaskResponse(t.Id, t.Title, t.Description, $"{t.TaskPriority}", $"{t.DueDate}", $"{t.Status}"));
     }
 }

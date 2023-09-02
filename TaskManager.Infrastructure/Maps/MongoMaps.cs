@@ -18,6 +18,7 @@ public static class MongoMaps
         BsonClassMap.RegisterClassMap<Task>(map =>
         {
             map.AutoMap();
+            map.SetIgnoreExtraElements(true);
             map.MapIdField(m => m.Id)
                 .SetIdGenerator(StringObjectIdGenerator.Instance)
                 .SetSerializer(new StringSerializer(BsonType.ObjectId));
