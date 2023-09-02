@@ -1,6 +1,4 @@
-﻿using TaskManager.Shared.Dtos.Task;
-
-namespace TaskManager.Domain.Abstractions;
+﻿namespace TaskManager.Domain.Abstractions;
 
 public interface ITaskRepository
 {

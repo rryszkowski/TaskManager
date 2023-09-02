@@ -18,7 +18,6 @@
 	<ItemGroup>
 		<Folder Include="Task\Commands\MarkTaskCompleted\" />
 		<Folder Include="Task\Commands\DeleteTask\" />
-		<Folder Include="User\Queries\" />
 	</ItemGroup>
 
 </Project>
