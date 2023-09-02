@@ -2,4 +2,4 @@
 
 namespace TaskManager.Application.Task.Commands.AddTask;
 
-public record AddTaskCommand(AddTaskRequest Request) : IRequest<string>;
+public record AddTaskCommand(AddTaskRequest Dto) : IRequest<string>;

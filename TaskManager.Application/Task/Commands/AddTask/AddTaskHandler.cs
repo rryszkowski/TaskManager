@@ -18,10 +18,10 @@ public class AddTaskHandler : IRequestHandler<AddTaskCommand, string>
     {
         var taskEntity = new Domain.Entities.Task
         {
-            Description = request.Request.Description,
-            TaskPriority = Enum.Parse<TaskPriority>(request.Request.Priority),
-            DueDate = request.Request.DueDate,
-            Title = request.Request.Title,
+            Description = request.Dto.Description,
+            TaskPriority = Enum.Parse<TaskPriority>(request.Dto.Priority),
+            DueDate = request.Dto.DueDate,
+            Title = request.Dto.Title,
             Status = TaskStatus.ToDo
         };
 
