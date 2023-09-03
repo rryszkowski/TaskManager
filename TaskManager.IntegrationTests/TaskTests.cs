@@ -17,7 +17,7 @@ public class TaskTests : BaseIntegrationTest
         const string title = "TestTitle";
 
         var command = new AddTaskCommand(
-            new AddTaskRequest(title, "Test desc", "High", DateTime.Today));
+            new AddTaskRequest(title, "Test desc", "High", DateTime.Today, "123", null, null));
 
         // Act
         var taskId = await Sender.Send(command);
