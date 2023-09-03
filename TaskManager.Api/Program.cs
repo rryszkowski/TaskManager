@@ -14,7 +14,8 @@ builder.Services.Configure<TaskManagerDatabaseOptions>(
 
 builder.Services.ConfigureMongo();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(TaskManager.Presentation.AssemblyReference).Assembly); // Indicates where the controllers are
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Comment.Commands;
 using TaskManager.Application.Comment.Queries;
 
-namespace TaskManager.Api.Controllers;
+namespace TaskManager.Presentation.Controllers;
 
 [Route("api/comments")]
 [ApiController]

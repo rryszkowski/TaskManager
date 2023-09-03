@@ -6,7 +6,7 @@ using TaskManager.Application.Task.Commands.DeleteTask;
 using TaskManager.Application.Task.Commands.MarkTaskCompleted;
 using TaskManager.Application.Task.Queries.GetAllTasks;
 
-namespace TaskManager.Api.Controllers;
+namespace TaskManager.Presentation.Controllers;
 
 [Route("api/tasks")]
 [ApiController]

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Project.Commands.AddProject;
 using TaskManager.Application.Project.Queries;
 
-namespace TaskManager.Api.Controllers;
+namespace TaskManager.Presentation.Controllers;
 
 [Route("api/projects")]
 [ApiController]

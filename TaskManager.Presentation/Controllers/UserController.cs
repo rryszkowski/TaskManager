@@ -4,7 +4,7 @@ using TaskManager.Application.User.Commands.AddUser;
 using TaskManager.Application.User.Queries.GetAllUsers;
 using TaskManager.Application.User.Queries.GetUser;
 
-namespace TaskManager.Api.Controllers;
+namespace TaskManager.Presentation.Controllers;
 
 [Route("api/users")]
 [ApiController]
