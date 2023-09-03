@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using TaskManager.Domain.Abstractions;
-using TaskManager.Domain.Entities;
 using TaskManager.Domain.Enums;
 using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
@@ -19,19 +18,15 @@ public class AddTaskHandler : IRequestHandler<AddTaskCommand, string>
     {
         var dto = request.Dto;
 
-        var taskEntity = new Domain.Entities.Task
-        {
-            Description = dto.Description,
-            TaskPriority = Enum.Parse<TaskPriority>(dto.Priority),
-            DueDate = dto.DueDate,
-            Title = dto.Title,
-            Status = TaskStatus.ToDo,
-            ProjectId = dto.ProjectId,
-            AssigneeId = dto.AssigneeId
-        };
-
-        if (dto.Tags != null && dto.Tags.Any())
-            taskEntity.Tags.AddRange(dto.Tags);
+        var taskEntity = new Domain.Entities.Task(
+            dto.Title,
+            dto.Description,
+            Enum.Parse<TaskPriority>(dto.Priority),
+            dto.DueDate,
+            TaskStatus.ToDo,
+            dto.ProjectId,
+            dto.AssigneeId,
+            dto.Tags);
 
         return await _taskRepository.Create(taskEntity);
     }

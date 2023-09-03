@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using TaskManager.Domain.Abstractions;
-using SystemTask = System.Threading.Tasks.Task;
 
 namespace TaskManager.Application.User.Commands.AddUser;
 
@@ -18,14 +17,14 @@ public class AddUserHandler : IRequestHandler<AddUserCommand, string>
         AddUserCommand request,
         CancellationToken cancellationToken)
     {
-        var user = new Domain.Entities.User
-        {
-            FirstName = request.Dto.FirstName,
-            LastName = request.Dto.LastName,
-            Email = request.Dto.Email,
-            Username = request.Dto.Username,
-            Password = request.Dto.Password
-        };
+        var dto = request.Dto;
+
+        var user = new Domain.Entities.User(
+            dto.Username,
+            dto.Password,
+            dto.Email,
+            dto.FirstName,
+            dto.LastName);
 
         return await _userRepository.Create(user);
     }

@@ -27,15 +27,14 @@ public class AddProjectHandler : IRequestHandler<AddProjectCommand, string>
 
         if (owner is null)
             throw new InvalidOperationException("Owner not found");
-        
-        var projectId = await _projectRepository.Create(new Domain.Entities.Project
-        {
-            Name = dto.Name,
-            Description = dto.Description,
-            StartDate = dto.StartDate,
-            EndDate = dto.EndDate,
-            OwnerId = owner.Id
-        });
+
+        var projectId = await _projectRepository.Create(
+            new Domain.Entities.Project(
+                dto.Name,
+                dto.Description,
+                dto.StartDate,
+                dto.EndDate,
+                owner.Id));
 
         return projectId;
     }

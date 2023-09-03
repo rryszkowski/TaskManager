@@ -22,7 +22,7 @@ public class GetAllTasksHandler : IRequestHandler<GetAllTasksQuery, IEnumerable<
             t.Id,
             t.Title,
             t.Description,
-            $"{t.TaskPriority}",
+            $"{t.Priority}",
             $"{t.DueDate}",
             $"{t.Status}",
             t.ProjectId,

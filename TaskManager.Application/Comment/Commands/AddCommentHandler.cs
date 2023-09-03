@@ -18,13 +18,12 @@ public class AddCommentHandler : IRequestHandler<AddCommentCommand, string>
         CancellationToken cancellationToken)
     {
         var dto = request.Dto;
-        var comment = new Domain.Entities.Comment
-        {
-            Text = dto.Text,
-            Timestamp = dto.Timestamp,
-            UserId = dto.UserId,
-            TaskId = dto.TaskId
-        };
+        var comment = new Domain.Entities.Comment(
+            dto.Text,
+            dto.Timestamp,
+            dto.TaskId,
+            dto.UserId);
+        
 
         return await _commentRepository.Create(comment);
     }

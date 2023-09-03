@@ -2,9 +2,23 @@
 
 public class User : Entity
 {
-    public string Username { get; set; } = null!;
-    public string Password { get; set; } = null!;
-    public string Email { get; set; } = null!;
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
+    public User(
+        string username,
+        string password,
+        string email,
+        string firstName,
+        string lastName)
+    {
+        Username = username;
+        Password = password;
+        Email = email;
+        FirstName = firstName;
+        LastName = lastName;
+    }
+
+    public string Username { get; private set; }
+    public string Password { get; private set; }
+    public string Email { get; private set; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
 }

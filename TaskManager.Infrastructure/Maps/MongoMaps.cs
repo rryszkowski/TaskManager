@@ -42,6 +42,7 @@ public static class MongoMaps
         {
             map.AutoMap();
             map.SetIgnoreExtraElements(true);
+            map.MapField(f => f.Tags);
         });
     }
 
