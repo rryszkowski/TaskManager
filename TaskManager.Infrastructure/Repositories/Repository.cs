@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using System.Linq.Expressions;
+using MongoDB.Driver;
 using TaskManager.Domain.Abstractions;
 using TaskManager.Domain.Entities;
 
@@ -33,4 +34,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity>
 
     public async System.Threading.Tasks.Task Delete(string id)
         => await _collection.DeleteOneAsync(t => t.Id == id);
+
+    public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        => _collection.Find(predicate).ToList();
 }

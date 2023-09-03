@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
 using TaskManager.Domain.Abstractions;
 
 namespace TaskManager.IntegrationTests;

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using System.Linq;
 using TaskManager.Domain.Abstractions;
 
 namespace TaskManager.Application.Task.Queries.GetAllTasks;

@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NetArchTest.Rules;
-using Xunit.Sdk;
 
 namespace Architecture.Tests;
 
