@@ -3,13 +3,11 @@ using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 namespace TaskManager.Domain.Entities;
 
-public class Task
+public class Task : Entity
 {
-    public string Id { get; set; }
+    public string Title { get; set; } = null!;
 
-    public string Title { get; set; }
-
-    public string Description { get; set; }
+    public string Description { get; set; } = null!;
 
     public TaskPriority TaskPriority { get; set; }
 

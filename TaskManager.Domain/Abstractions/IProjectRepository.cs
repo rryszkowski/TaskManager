@@ -2,6 +2,6 @@
 
 namespace TaskManager.Domain.Abstractions;
 
-public interface IUserRepository : IRepository<User>
+public interface IProjectRepository : IRepository<Project>
 {
 }
