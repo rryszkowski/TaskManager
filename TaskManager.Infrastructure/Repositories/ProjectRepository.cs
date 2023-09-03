@@ -4,11 +4,11 @@ using TaskManager.Domain.Entities;
 
 namespace TaskManager.Infrastructure.Repositories;
 
-public class UserRepository : Repository<User>, IUserRepository
+public class ProjectRepository : Repository<Project>, IProjectRepository
 {
-    public UserRepository(
+    public ProjectRepository(
         IMongoDatabase mongoDatabase)
-        : base(mongoDatabase.GetCollection<User>("Users"))
+        : base(mongoDatabase.GetCollection<Project>("Projects"))
     {
     }
 }

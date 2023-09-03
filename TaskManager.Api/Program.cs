@@ -24,6 +24,7 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddSingleton<ITaskRepository, TaskRepository>();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IProjectRepository, ProjectRepository>();
 
 var app = builder.Build();
 
