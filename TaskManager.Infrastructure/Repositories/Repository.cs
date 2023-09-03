@@ -23,7 +23,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity>
         return entity.Id;
     }
 
-    public async Task<TEntity> Get(string id)
+    public async Task<TEntity?> Get(string id)
         => await _collection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
     public async Task<IEnumerable<TEntity>> GetAll()

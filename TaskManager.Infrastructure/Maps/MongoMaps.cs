@@ -12,6 +12,7 @@ public static class MongoMaps
     public static void Configure()
     {
         ConfigureEntity();
+        ConfigureProject();
         ConfigureTask();
         ConfigureUser();
     }
@@ -23,6 +24,15 @@ public static class MongoMaps
             map.MapIdField(m => m.Id)
                 .SetIdGenerator(StringObjectIdGenerator.Instance)
                 .SetSerializer(new StringSerializer(BsonType.ObjectId));
+        });
+    }
+
+    private static void ConfigureProject()
+    {
+        BsonClassMap.RegisterClassMap<Project>(map =>
+        {
+            map.AutoMap();
+            map.SetIgnoreExtraElements(true);
         });
     }
 

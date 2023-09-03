@@ -15,6 +15,12 @@ public class Task : Entity
 
     public  TaskStatus Status { get; set; }
 
+    public List<string> Tags = new();
+
+    public string ProjectId { get; set; } = null!;
+    
+    public string? AssigneeId { get; set; } = null!;
+
     public void MarkAsCompleted()
         => Status = TaskStatus.Completed;
 }

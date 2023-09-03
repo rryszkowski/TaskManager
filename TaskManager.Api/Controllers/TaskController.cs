@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TaskManager.Application.Task.Commands.AddTag;
 using TaskManager.Application.Task.Commands.AddTask;
 using TaskManager.Application.Task.Commands.DeleteTask;
 using TaskManager.Application.Task.Commands.MarkTaskCompleted;
@@ -34,6 +35,16 @@ public class TaskController : ControllerBase
     public async Task<ActionResult> MarkAsCompleted(string id)
     {
         var command = new MarkTaskCompletedCommand(id);
+
+        await _sender.Send(command);
+
+        return Ok();
+    }
+
+    [HttpPatch("{id}/addtag/{tag}")]
+    public async Task<ActionResult> AddTag(string id, string tag)
+    {
+        var command = new AddTagCommand(id, tag);
 
         await _sender.Send(command);
 

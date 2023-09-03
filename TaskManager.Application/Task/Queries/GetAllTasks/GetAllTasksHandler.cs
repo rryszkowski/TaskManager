@@ -24,6 +24,9 @@ public class GetAllTasksHandler : IRequestHandler<GetAllTasksQuery, IEnumerable<
             t.Description,
             $"{t.TaskPriority}",
             $"{t.DueDate}",
-            $"{t.Status}"));
+            $"{t.Status}",
+            t.ProjectId,
+            t.AssigneeId,
+            t.Tags));
     }
 }

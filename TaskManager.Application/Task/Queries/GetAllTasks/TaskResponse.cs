@@ -6,4 +6,7 @@ public sealed record TaskResponse(
     string Description,
     string Priority,
     string DueDate,
-    string Status);
+    string Status,
+    string ProjectId,
+    string? AssigneeId,
+    IEnumerable<string> Tags);
