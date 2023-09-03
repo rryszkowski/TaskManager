@@ -35,6 +35,6 @@ public abstract class Repository<TEntity> : IRepository<TEntity>
     public async System.Threading.Tasks.Task Delete(string id)
         => await _collection.DeleteOneAsync(t => t.Id == id);
 
-    public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
-        => _collection.Find(predicate).ToList();
+    public async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
+        => (await _collection.FindAsync(predicate)).ToEnumerable();
 }

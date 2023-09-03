@@ -21,8 +21,8 @@ public class AddProjectHandler : IRequestHandler<AddProjectCommand, string>
         CancellationToken cancellationToken)
     {
         var dto = request.Dto;
-        var owner = _userRepository
-            .Find(u => u.Username == dto.Owner)
+        var owner = (await _userRepository
+            .Find(u => u.Username == dto.Owner))
             .FirstOrDefault();
 
         if (owner is null)

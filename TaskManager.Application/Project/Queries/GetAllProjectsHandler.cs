@@ -23,7 +23,7 @@ public class GetAllProjectsHandler : IRequestHandler<GetAllProjectsQuery, IEnume
         var projects = (await _projectRepository.GetAll()).ToList();
         var ownerIds = projects.Select(p => p.OwnerId);
 
-        var logins = _userRepository.Find(u => ownerIds.Contains(u.Id))
+        var logins = (await _userRepository.Find(u => ownerIds.Contains(u.Id)))
             .ToDictionary(k => k.Id, v => v.Username);
 
         var projectsResponses = projects.Select(p =>
