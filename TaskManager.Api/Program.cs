@@ -1,9 +1,7 @@
 using System.Reflection;
-using TaskManager.Domain.Abstractions;
 using TaskManager.Infrastructure.Extensions;
 using TaskManager.Infrastructure.Maps;
 using TaskManager.Infrastructure.Options;
-using TaskManager.Infrastructure.Repositories;
 
 MongoMaps.Configure();
 
@@ -12,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<TaskManagerDatabaseOptions>(
     builder.Configuration.GetSection("TaskManagerDatabase"));
 
-builder.Services.ConfigureMongo();
+builder.Services.RegisterInfrastructure();
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(TaskManager.Presentation.AssemblyReference).Assembly); // Indicates where the controllers are
@@ -22,11 +20,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(Assembly.Load("TaskManager.Application")));
-
-builder.Services.AddSingleton<ITaskRepository, TaskRepository>();
-builder.Services.AddSingleton<IUserRepository, UserRepository>();
-builder.Services.AddSingleton<IProjectRepository, ProjectRepository>();
-builder.Services.AddSingleton<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
 
