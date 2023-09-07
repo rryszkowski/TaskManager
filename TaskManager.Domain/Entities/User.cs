@@ -1,6 +1,6 @@
 ﻿namespace TaskManager.Domain.Entities;
 
-public class User : Entity
+public sealed class User : Entity
 {
     public User(
         string username,

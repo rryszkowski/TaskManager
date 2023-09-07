@@ -3,6 +3,22 @@ version: '3.4'
 services:
   taskmanager.api:
     image: ${DOCKER_REGISTRY-}taskmanagerapi
+    depends_on: 
+      - "mongo.db"
     build:
       context: .
       dockerfile: TaskManager.Api/Dockerfile
+
+  mongo.db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    container_name: MongoDB
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+
+volumes:
+  mongodb_data:

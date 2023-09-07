@@ -1,6 +1,6 @@
 ﻿namespace TaskManager.Domain.Entities;
 
-public class Comment : Entity
+public sealed class Comment : Entity
 {
     public Comment(
         string text,

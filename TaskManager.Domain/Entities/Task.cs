@@ -3,7 +3,7 @@ using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 namespace TaskManager.Domain.Entities;
 
-public class Task : Entity
+public sealed class Task : Entity
 {
     public Task(
         string title,

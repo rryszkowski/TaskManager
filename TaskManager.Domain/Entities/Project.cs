@@ -1,6 +1,6 @@
 ﻿namespace TaskManager.Domain.Entities;
 
-public class Project : Entity
+public sealed class Project : Entity
 {
     public Project(
         string name,
