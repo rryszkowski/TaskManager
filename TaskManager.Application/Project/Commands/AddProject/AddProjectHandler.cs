@@ -21,11 +21,10 @@ public class AddProjectHandler : IRequestHandler<AddProjectCommand, string>
         CancellationToken cancellationToken)
     {
         var dto = request.Dto;
-        var owner = (await _userRepository
-            .Find(u => u.Username == dto.Owner))
-            .FirstOrDefault();
+        var ownerId = await _userRepository
+            .GetUserIdByUsername(dto.Owner);
 
-        if (owner is null)
+        if (ownerId is null)
             throw new InvalidOperationException("Owner not found");
 
         var projectId = await _projectRepository.Create(
@@ -34,7 +33,7 @@ public class AddProjectHandler : IRequestHandler<AddProjectCommand, string>
                 dto.Description,
                 dto.StartDate,
                 dto.EndDate,
-                owner.Id));
+                ownerId));
 
         return projectId;
     }
