@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using TaskManager.Domain.Abstractions;
 using TaskManager.Infrastructure.Options;
 using TaskManager.Infrastructure.Repositories;
+using TaskManager.Infrastructure.SchemaConfig;
 
 namespace TaskManager.Infrastructure.Extensions;
 
@@ -22,7 +23,11 @@ public static class ServiceCollectionExtensions
         {
             var dbOptions = sp.GetService<IOptions<TaskManagerDatabaseOptions>>();
             var mongoClient = new MongoClient(dbOptions!.Value.ConnectionString);
-            return mongoClient.GetDatabase(dbOptions.Value.DatabaseName);
+            var db = mongoClient.GetDatabase(dbOptions.Value.DatabaseName);
+
+            UserConfig.ConfigureUsers(db);
+
+            return db;
         });
 
         return services;
