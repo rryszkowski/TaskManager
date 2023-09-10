@@ -32,13 +32,14 @@ public class GetAllProjectsHandler : IRequestHandler<GetAllProjectsQuery, IEnume
                 p.Description,
                 p.StartDate,
                 p.EndDate,
-                GetLogin(p.OwnerId)));
+                new List<ParticipantResponse>(p.Participants.Select(par =>
+                    new ParticipantResponse(GetLogin(par.UserId)!, par.Role)))));
 
         return projectsResponses;
 
-        string GetLogin(string userId)
+        string? GetLogin(string userId)
             => logins.TryGetValue(userId, out var login) 
                 ? login 
-                : throw new InvalidOperationException("Owner not found");
+                : null;
     }
 }
