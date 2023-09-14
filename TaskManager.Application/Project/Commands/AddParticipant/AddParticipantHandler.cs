@@ -34,7 +34,8 @@ public class AddParticipantHandler : IRequestHandler<AddParticipantCommand>
         if (project is null)
             throw new InvalidOperationException("Project not found.");
 
-        project.Participants.Add(Participant.Create(request.UserId, ProjectRole.Participant));
+        project.AddParticipant(
+            Participant.Create(request.UserId, ProjectRole.Participant));
 
         await _projectRepository.Update(project);
     }

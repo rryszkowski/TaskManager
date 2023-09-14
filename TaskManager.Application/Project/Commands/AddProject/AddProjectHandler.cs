@@ -23,9 +23,12 @@ public class AddProjectHandler : IRequestHandler<AddProjectCommand, string>
         var dto = request.Dto;
         var ownerId = await _userRepository
             .GetUserIdByUsername(dto.Owner);
-
+        
         if (ownerId is null)
             throw new InvalidOperationException("Owner not found");
+
+        if (dto.Deadline <= DateTime.Now)
+            throw new InvalidOperationException("Deadline can't be set in the past.");
 
         var projectId = await _projectRepository.Create(
             new Domain.Entities.Project(
@@ -33,7 +36,8 @@ public class AddProjectHandler : IRequestHandler<AddProjectCommand, string>
                 dto.Description,
                 dto.StartDate,
                 dto.EndDate,
-                ownerId));
+                ownerId,
+                dto.Deadline));
 
         return projectId;
     }
