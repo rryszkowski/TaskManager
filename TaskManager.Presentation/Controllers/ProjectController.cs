@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TaskManager.Application.Project.Commands.AddParticipant;
 using TaskManager.Application.Project.Commands.AddProject;
 using TaskManager.Application.Project.Queries;
 
@@ -22,6 +23,16 @@ public class ProjectController : ControllerBase
         var command = new AddProjectCommand(request);
 
         return Ok(await _sender.Send(command));
+    }
+
+    [HttpPatch("{id}/addparticipant/{userId}")]
+    public async Task<ActionResult> AddParticipant(string id, string userId)
+    {
+        var command = new AddParticipantCommand(id, userId);
+
+        await _sender.Send(command);
+
+        return Ok();
     }
 
     [HttpGet]

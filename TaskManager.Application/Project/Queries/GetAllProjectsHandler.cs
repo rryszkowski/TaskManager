@@ -21,13 +21,13 @@ public class GetAllProjectsHandler : IRequestHandler<GetAllProjectsQuery, IEnume
         CancellationToken cancellationToken)
     {
         var projects = (await _projectRepository.GetAll()).ToList();
-        var ownerIds = projects.Select(p => p.OwnerId);
-
-        var logins = (await _userRepository.Find(u => ownerIds.Contains(u.Id)))
+        
+        var logins = (await _userRepository.GetAll())
             .ToDictionary(k => k.Id, v => v.Username);
 
         var projectsResponses = projects.Select(p =>
             new ProjectResponse(
+                p.Id,
                 p.Name,
                 p.Description,
                 p.StartDate,
