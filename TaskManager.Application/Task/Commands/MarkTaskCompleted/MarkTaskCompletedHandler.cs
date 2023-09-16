@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using TaskManager.Domain.Abstractions;
+using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 namespace TaskManager.Application.Task.Commands.MarkTaskCompleted;
 
@@ -17,7 +18,11 @@ public class MarkTaskCompletedHandler : IRequestHandler<MarkTaskCompletedCommand
         CancellationToken cancellationToken)
     {
         var task = await _taskRepository.Get(request.Id);
-        task.MarkAsCompleted();
+
+        if (task is null)
+            throw new InvalidOperationException("Task does not exist.");
+
+        task.ChangeStatus(TaskStatus.Completed);
         await _taskRepository.Update(task);
     }
 }

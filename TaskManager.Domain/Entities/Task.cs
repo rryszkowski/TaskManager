@@ -5,6 +5,13 @@ namespace TaskManager.Domain.Entities;
 
 public sealed class Task : Entity
 {
+    private static readonly List<(TaskStatus current, TaskStatus next)> AllowedTransitions = new()
+    {
+        (TaskStatus.ToDo, TaskStatus.InProgress),
+        (TaskStatus.InProgress, TaskStatus.Completed),
+        (TaskStatus.Completed, TaskStatus.ToDo)
+    };
+
     public Task(
         string title,
         string description,
@@ -44,6 +51,13 @@ public sealed class Task : Entity
     
     public string? AssigneeId { get; private set; }
 
-    public void MarkAsCompleted()
-        => Status = TaskStatus.Completed;
+    public void ChangeStatus(TaskStatus newStatus)
+    {
+        if (!AllowedTransitions.Contains((Status, newStatus)))
+        {
+            throw new InvalidOperationException($"Task status can't be changed from status {Status} to {newStatus}");
+        }
+
+        Status = newStatus;
+    }
 }

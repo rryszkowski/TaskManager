@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Task.Commands.AddTag;
 using TaskManager.Application.Task.Commands.AddTask;
+using TaskManager.Application.Task.Commands.ChangeTaskStatus;
 using TaskManager.Application.Task.Commands.DeleteTask;
 using TaskManager.Application.Task.Commands.MarkTaskCompleted;
 using TaskManager.Application.Task.Queries.GetAllTasks;
@@ -37,6 +38,19 @@ public class TaskController : ControllerBase
         var command = new MarkTaskCompletedCommand(id);
 
         await _sender.Send(command);
+
+        return Ok();
+    }
+
+    [HttpPatch("{id}/changestatus/{status}")]
+    public async Task<ActionResult> ChangeTaskStatus(
+        string id,
+        string status,
+        CancellationToken cancellationToken)
+    {
+        var command = new ChangeTaskStatusCommand(id, status);
+
+        await _sender.Send(command, cancellationToken);
 
         return Ok();
     }
