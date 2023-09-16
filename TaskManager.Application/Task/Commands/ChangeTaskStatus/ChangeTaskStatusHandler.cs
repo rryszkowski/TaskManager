@@ -25,6 +25,10 @@ public class ChangeTaskStatusHandler : IRequestHandler<ChangeTaskStatusCommand>
         Enum.TryParse<Domain.Enums.TaskStatus>(request.Status, out var newStatus);
 
         task.ChangeStatus(newStatus);
+        
+        if (cancellationToken.IsCancellationRequested)
+            return;
+
         await _taskRepository.Update(task);
     }
 }

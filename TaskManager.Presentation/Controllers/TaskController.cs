@@ -14,14 +14,11 @@ namespace TaskManager.Presentation.Controllers;
 public class TaskController : ControllerBase
 {
     private readonly ISender _sender;
-    private readonly IPublisher _publisher;
 
     public TaskController(
-        ISender sender,
-        IPublisher publisher)
+        ISender sender)
     {
         _sender = sender;
-        _publisher = publisher;
     }
 
     [HttpPost]
