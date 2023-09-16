@@ -21,7 +21,7 @@ public class ProjectController : ControllerBase
     public async Task<ActionResult> Add([FromBody] AddProjectRequest request)
     {
         var command = new AddProjectCommand(request);
-
+        
         return Ok(await _sender.Send(command));
     }
 
