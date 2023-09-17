@@ -30,6 +30,13 @@ public class AddTaskHandler : IRequestHandler<AddTaskCommand, string>
         if (project.Participants.All(p => p.UserId != dto.AssigneeId))
             throw new InvalidOperationException("Assignee does not belong to the project.");
 
+        if (dto.ParentTaskId is not null)
+        {
+            var parentTask = await _taskRepository.Get(dto.ParentTaskId);
+            if (parentTask is null)
+                throw new InvalidOperationException("Parent task does not exist.");
+        }
+
         var taskEntity = new Domain.Entities.Task(
             dto.Title,
             dto.Description,
@@ -38,6 +45,7 @@ public class AddTaskHandler : IRequestHandler<AddTaskCommand, string>
             TaskStatus.ToDo,
             dto.ProjectId,
             dto.AssigneeId,
+            dto.ParentTaskId,
             dto.Tags);
 
         return await _taskRepository.Create(taskEntity);

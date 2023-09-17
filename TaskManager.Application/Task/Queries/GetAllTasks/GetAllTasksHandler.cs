@@ -27,6 +27,7 @@ public class GetAllTasksHandler : IRequestHandler<GetAllTasksQuery, IEnumerable<
             $"{t.Status}",
             t.ProjectId,
             t.AssigneeId,
+            t.ParentTaskId,
             t.Tags));
     }
 }

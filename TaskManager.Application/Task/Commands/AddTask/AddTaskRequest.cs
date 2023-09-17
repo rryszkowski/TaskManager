@@ -1,7 +1,4 @@
-﻿using TaskManager.Application.Task.Commands.AddTag;
-using TaskManager.Domain.Entities;
-
-namespace TaskManager.Application.Task.Commands.AddTask;
+﻿namespace TaskManager.Application.Task.Commands.AddTask;
 
 public sealed record AddTaskRequest(
     string Title,
@@ -10,4 +7,5 @@ public sealed record AddTaskRequest(
     DateTime DueDate,
     string ProjectId,
     string? AssigneeId,
+    string? ParentTaskId,
     IReadOnlyList<string>? Tags);

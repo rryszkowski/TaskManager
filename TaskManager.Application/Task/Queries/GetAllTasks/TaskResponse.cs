@@ -9,4 +9,5 @@ public sealed record TaskResponse(
     string Status,
     string ProjectId,
     string? AssigneeId,
+    string? ParentTaskId,
     IEnumerable<string> Tags);

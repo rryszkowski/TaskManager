@@ -18,7 +18,6 @@
 		<Folder Include="Comment\Commands\" />
 		<Folder Include="Comment\Queries\" />
 		<Folder Include="Project\Queries\" />
-		<Folder Include="Task\Commands\MarkTaskCompleted\" />
 		<Folder Include="Task\Commands\DeleteTask\" />
 		<Folder Include="User\Queries\GetUser\" />
 	</ItemGroup>

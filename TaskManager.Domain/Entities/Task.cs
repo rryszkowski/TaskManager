@@ -20,6 +20,7 @@ public sealed class Task : Entity
         TaskStatus status,
         string projectId,
         string? assigneeId,
+        string? parentTaskId,
         IReadOnlyList<string>? tags)
     {
         Title = title;
@@ -28,7 +29,9 @@ public sealed class Task : Entity
         DueDate = dueDate;
         Status = status;
         ProjectId = projectId;
+        ParentTaskId = parentTaskId;
         AssigneeId = assigneeId;
+
         Tags = new List<string>();
         
         if (tags != null && tags.Any())
@@ -50,6 +53,8 @@ public sealed class Task : Entity
     public string ProjectId { get; private set; }
     
     public string? AssigneeId { get; private set; }
+    
+    public string? ParentTaskId { get; private set; }
 
     public void ChangeStatus(TaskStatus newStatus)
     {

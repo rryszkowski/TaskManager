@@ -4,7 +4,6 @@ using TaskManager.Application.Task.Commands.AddTag;
 using TaskManager.Application.Task.Commands.AddTask;
 using TaskManager.Application.Task.Commands.ChangeTaskStatus;
 using TaskManager.Application.Task.Commands.DeleteTask;
-using TaskManager.Application.Task.Commands.MarkTaskCompleted;
 using TaskManager.Application.Task.Queries.GetAllTasks;
 
 namespace TaskManager.Presentation.Controllers;
@@ -28,17 +27,7 @@ public class TaskController : ControllerBase
 
         return Ok(await _sender.Send(command));
     }
-
-    [HttpPatch("{id}/completed")]
-    public async Task<ActionResult> MarkAsCompleted(string id)
-    {
-        var command = new MarkTaskCompletedCommand(id);
-
-        await _sender.Send(command);
-
-        return Ok();
-    }
-
+    
     [HttpPatch("{id}/changestatus/{status}")]
     public async Task<ActionResult> ChangeTaskStatus(
         string id,
