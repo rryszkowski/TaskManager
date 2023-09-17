@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using TaskManager.Domain.Abstractions;
 
-namespace TaskManager.Application.Comment.Commands;
+namespace TaskManager.Application.Comment.Commands.AddComment;
 
 public class AddCommentHandler : IRequestHandler<AddCommentCommand, string>
 {
@@ -23,7 +23,7 @@ public class AddCommentHandler : IRequestHandler<AddCommentCommand, string>
             dto.Timestamp,
             dto.TaskId,
             dto.UserId);
-        
+
 
         return await _commentRepository.Create(comment);
     }

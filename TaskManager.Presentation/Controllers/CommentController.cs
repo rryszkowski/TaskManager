@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.Application.Comment.Commands;
+using TaskManager.Application.Comment.Commands.AddComment;
 using TaskManager.Application.Comment.Queries;
 
 namespace TaskManager.Presentation.Controllers;

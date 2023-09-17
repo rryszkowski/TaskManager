@@ -1,4 +1,4 @@
-﻿namespace TaskManager.Application.Comment.Commands;
+﻿namespace TaskManager.Application.Comment.Commands.AddComment;
 
 public sealed record AddCommentRequest(
     string Text,
