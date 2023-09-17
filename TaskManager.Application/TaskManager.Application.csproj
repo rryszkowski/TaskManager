@@ -17,6 +17,7 @@
 	<ItemGroup>
 		<Folder Include="Comment\Commands\EditComment\" />
 		<Folder Include="Comment\Queries\" />
+		<Folder Include="Project\Commands\DeleteProject\" />
 		<Folder Include="Project\Queries\" />
 		<Folder Include="Task\Commands\DeleteTask\" />
 		<Folder Include="User\Queries\GetUser\" />

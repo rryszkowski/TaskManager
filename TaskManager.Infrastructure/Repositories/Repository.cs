@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using TaskManager.Domain.Abstractions;
 using TaskManager.Domain.Entities;
+using Task = System.Threading.Tasks.Task;
 
 namespace TaskManager.Infrastructure.Repositories;
 
@@ -29,11 +30,14 @@ public abstract class Repository<TEntity> : IRepository<TEntity>
     public async Task<IEnumerable<TEntity>> GetAll()
         => await _collection.Find(_ => true).ToListAsync();
 
-    public async System.Threading.Tasks.Task Update(TEntity entity)
+    public async Task Update(TEntity entity)
         => await _collection.ReplaceOneAsync(t => t.Id == entity.Id, entity);
 
-    public async System.Threading.Tasks.Task Delete(string id)
+    public async Task Delete(string id)
         => await _collection.DeleteOneAsync(t => t.Id == id);
+
+    public async Task DeleteRange(Expression<Func<TEntity, bool>> predicate)
+        => await _collection.DeleteManyAsync(predicate);
 
     public async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
         => (await _collection.FindAsync(predicate)).ToEnumerable();

@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TaskManager.Application.Comment.Commands.DeleteComment;
 using TaskManager.Application.Project.Commands.AddParticipant;
 using TaskManager.Application.Project.Commands.AddProject;
+using TaskManager.Application.Project.Commands.DeleteProject;
 using TaskManager.Application.Project.Queries;
 
 namespace TaskManager.Presentation.Controllers;
@@ -41,5 +43,15 @@ public class ProjectController : ControllerBase
         var tasks = await _sender.Send(new GetAllProjectsQuery());
 
         return Ok(tasks);
+    }
+
+    [HttpDelete]
+    public async Task<ActionResult> Delete([FromBody] DeleteProjectRequest request)
+    {
+        var command = new DeleteProjectCommand(request);
+
+        await _sender.Send(command);
+
+        return Ok();
     }
 }

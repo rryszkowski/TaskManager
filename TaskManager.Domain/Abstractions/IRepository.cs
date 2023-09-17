@@ -9,5 +9,6 @@ public interface IRepository<TEntity>
     Task<IEnumerable<TEntity>> GetAll();
     Task Update(TEntity entity);
     Task Delete(string id);
+    Task DeleteRange(Expression<Func<TEntity, bool>> predicate);
     Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
 }
