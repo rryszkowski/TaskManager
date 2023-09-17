@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Comment.Commands.AddComment;
+using TaskManager.Application.Comment.Commands.EditComment;
 using TaskManager.Application.Comment.Queries;
+using TaskManager.Application.Project.Commands.AddParticipant;
 
 namespace TaskManager.Presentation.Controllers;
 
@@ -30,5 +32,15 @@ public class CommentController : ControllerBase
         var tasks = await _sender.Send(new GetAllCommentsQuery());
 
         return Ok(tasks);
+    }
+
+    [HttpPatch]
+    public async Task<ActionResult> EditComment([FromBody] EditCommentRequest request)
+    {
+        var command = new EditCommentCommand(request);
+
+        await _sender.Send(command);
+
+        return Ok();
     }
 }
