@@ -30,4 +30,4 @@ Project is built using Clean Architecture approach. It is divided into 4 layers:
 
 ## Side notes
 * AssemblyReference static classes in each project are used to reference projects with reflections.
-* MongoMaps static class in infrastructure is for configuring MongoDB entities, similarily to EF fluent API configuratio.
+* MongoMaps static class in infrastructure is for configuring MongoDB entities, similarily to EF fluent API configuration.
