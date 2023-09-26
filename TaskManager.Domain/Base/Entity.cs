@@ -1,4 +1,4 @@
-﻿namespace TaskManager.Domain.Entities;
+﻿namespace TaskManager.Domain.Base;
 
 public abstract class Entity
 {

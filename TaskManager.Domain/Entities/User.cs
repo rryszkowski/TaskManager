@@ -1,4 +1,6 @@
-﻿namespace TaskManager.Domain.Entities;
+﻿using TaskManager.Domain.Base;
+
+namespace TaskManager.Domain.Entities;
 
 public sealed class User : Entity
 {

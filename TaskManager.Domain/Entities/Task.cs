@@ -1,4 +1,5 @@
-﻿using TaskManager.Domain.Enums;
+﻿using TaskManager.Domain.Base;
+using TaskManager.Domain.Enums;
 using TaskStatus = TaskManager.Domain.Enums.TaskStatus;
 
 namespace TaskManager.Domain.Entities;

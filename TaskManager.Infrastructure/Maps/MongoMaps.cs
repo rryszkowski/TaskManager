@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Bson.Serialization.Serializers;
+using TaskManager.Domain.Base;
 using TaskManager.Domain.Entities;
 using Task = TaskManager.Domain.Entities.Task;
 

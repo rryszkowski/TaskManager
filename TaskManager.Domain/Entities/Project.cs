@@ -1,9 +1,10 @@
-﻿using TaskManager.Domain.Enums;
+﻿using TaskManager.Domain.Base;
+using TaskManager.Domain.Enums;
 using TaskManager.Domain.ValueObjects;
 
 namespace TaskManager.Domain.Entities;
 
-public sealed class Project : Entity
+public sealed class Project : AggregateRoot
 {
     public Project(
         string name,
